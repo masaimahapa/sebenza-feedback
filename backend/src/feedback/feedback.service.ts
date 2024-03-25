@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 
 import { FeedbackDto, UpdateFeedbackDto } from './dto';
 import { PrismaService } from 'src/prisma/prisma.service';
@@ -9,17 +9,16 @@ export class FeedbackService {
   async createFeedback(dto: FeedbackDto) {
     const user = await this.prisma.user.findUnique({
       where: {
-        cell_number: dto.cell_number,
+        id: dto.user_id,
       },
     });
     if (!user) {
-      throw new Error('User not found');
+      throw new HttpException('User not found', HttpStatus.NOT_FOUND);
     }
     const data = await this.prisma.feedback.create({
       data: {
         title: dto.title,
         description: dto.description,
-        cell_number: dto.cell_number,
         status: dto.status,
         userId: user.id,
       },
@@ -33,6 +32,9 @@ export class FeedbackService {
         id: id,
       },
     });
+    if (!feedback) {
+      throw new HttpException('Feedback not found', HttpStatus.NOT_FOUND);
+    }
     return feedback;
   }
 
@@ -57,6 +59,9 @@ export class FeedbackService {
 
   async getAllFeedback() {
     const allFeeback = await this.prisma.feedback.findMany();
+    if(!allFeeback) {
+      return [];
+    }
     return allFeeback;
   }
 }

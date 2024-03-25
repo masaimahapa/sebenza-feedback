@@ -9,48 +9,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateFeedbackDto = exports.FeedbackDto = void 0;
+exports.UpdateUserDto = exports.CreateUserDto = void 0;
 const class_validator_1 = require("class-validator");
-class FeedbackDto {
+class CreateUserDto {
 }
-exports.FeedbackDto = FeedbackDto;
+exports.CreateUserDto = CreateUserDto;
 __decorate([
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
-], FeedbackDto.prototype, "title", void 0);
+], CreateUserDto.prototype, "name", void 0);
 __decorate([
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
-], FeedbackDto.prototype, "description", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsOptional)(),
-    __metadata("design:type", String)
-], FeedbackDto.prototype, "status", void 0);
-__decorate([
-    (0, class_validator_1.IsNumber)(),
-    __metadata("design:type", Number)
-], FeedbackDto.prototype, "user_id", void 0);
-class UpdateFeedbackDto {
+], CreateUserDto.prototype, "cell_number", void 0);
+class UpdateUserDto {
 }
-exports.UpdateFeedbackDto = UpdateFeedbackDto;
+exports.UpdateUserDto = UpdateUserDto;
 __decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
-], UpdateFeedbackDto.prototype, "title", void 0);
+], UpdateUserDto.prototype, "name", void 0);
 __decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
-], UpdateFeedbackDto.prototype, "description", void 0);
-__decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsOptional)(),
-    __metadata("design:type", String)
-], UpdateFeedbackDto.prototype, "status", void 0);
-__decorate([
-    (0, class_validator_1.IsOptional)(),
-    __metadata("design:type", Number)
-], UpdateFeedbackDto.prototype, "user_id", void 0);
-//# sourceMappingURL=feedback.dto.js.map
+], UpdateUserDto.prototype, "cell_number", void 0);
+//# sourceMappingURL=user.dto.js.map

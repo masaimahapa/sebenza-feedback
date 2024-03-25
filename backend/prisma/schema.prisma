@@ -24,7 +24,6 @@ model Feedback {
   id          Int      @id @default(autoincrement())
   title       String
   description String
-  cell_number String   
   status      String   @default("new")
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt

@@ -19,17 +19,16 @@ let FeedbackService = class FeedbackService {
     async createFeedback(dto) {
         const user = await this.prisma.user.findUnique({
             where: {
-                cell_number: dto.cell_number,
+                id: dto.user_id,
             },
         });
         if (!user) {
-            throw new Error('User not found');
+            throw new common_1.HttpException('User not found', common_1.HttpStatus.NOT_FOUND);
         }
         const data = await this.prisma.feedback.create({
             data: {
                 title: dto.title,
                 description: dto.description,
-                cell_number: dto.cell_number,
                 status: dto.status,
                 userId: user.id,
             },
@@ -42,6 +41,9 @@ let FeedbackService = class FeedbackService {
                 id: id,
             },
         });
+        if (!feedback) {
+            throw new common_1.HttpException('Feedback not found', common_1.HttpStatus.NOT_FOUND);
+        }
         return feedback;
     }
     async updateFeedback(id, updateDto) {
@@ -63,6 +65,9 @@ let FeedbackService = class FeedbackService {
     }
     async getAllFeedback() {
         const allFeeback = await this.prisma.feedback.findMany();
+        if (!allFeeback) {
+            return [];
+        }
         return allFeeback;
     }
 };

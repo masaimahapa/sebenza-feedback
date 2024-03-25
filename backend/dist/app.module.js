@@ -10,6 +10,7 @@ exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const feedback_module_1 = require("./feedback/feedback.module");
 const config_1 = require("@nestjs/config");
+const user_module_1 = require("./user/user.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -17,6 +18,7 @@ exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
             feedback_module_1.FeedbackModule,
+            user_module_1.UserModule,
             config_1.ConfigModule.forRoot({
                 isGlobal: true,
             })

@@ -7,7 +7,6 @@ export declare class FeedbackService {
         id: number;
         title: string;
         description: string;
-        cell_number: string;
         status: string;
         createdAt: Date;
         updatedAt: Date;
@@ -17,7 +16,6 @@ export declare class FeedbackService {
         id: number;
         title: string;
         description: string;
-        cell_number: string;
         status: string;
         createdAt: Date;
         updatedAt: Date;
@@ -27,7 +25,6 @@ export declare class FeedbackService {
         id: number;
         title: string;
         description: string;
-        cell_number: string;
         status: string;
         createdAt: Date;
         updatedAt: Date;
@@ -37,7 +34,6 @@ export declare class FeedbackService {
         id: number;
         title: string;
         description: string;
-        cell_number: string;
         status: string;
         createdAt: Date;
         updatedAt: Date;
@@ -47,7 +43,6 @@ export declare class FeedbackService {
         id: number;
         title: string;
         description: string;
-        cell_number: string;
         status: string;
         createdAt: Date;
         updatedAt: Date;
