@@ -10,6 +10,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import NavigationBar from './components/navigation-bar.tsx'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import AddUserPage from './pages/add-user-page.tsx'
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: '/feedback/:id',
     element: <FeedbackDetailPage />
+  },
+  {
+    path:'/add-user',
+    element: <AddUserPage />
   }
 ])
 const queryClient = new QueryClient();

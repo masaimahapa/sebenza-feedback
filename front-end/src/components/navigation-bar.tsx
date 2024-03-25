@@ -13,6 +13,11 @@ export default function NavigationBar() {
           <IoIosAddCircleOutline  className='ml-2 w-6 h-6'/>
           </a>
         </li>
+        <li>
+          <a href="/add-user" className="hover:text-gray-300 flex" >Create User
+          <IoIosAddCircleOutline  className='ml-2 w-6 h-6'/>
+          </a>
+        </li>
       </ul>
     </nav>
   );

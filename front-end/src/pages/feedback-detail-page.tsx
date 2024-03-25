@@ -1,32 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useQuery, useMutation } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
+import { Feedback } from '../interfaces/feedback-interface';
 
 export default function FeedbackDetailPage() {
     const { id } = useParams();
     const [editMode, setEditMode] = useState(false);
-    const [feedback, setFeedback] = useState({ title: '', description: '', status: '' });
-    const queryClient = useQueryClient();
+    const [feedback, setFeedback] = useState({ title: '', description: '', status: '', user_id:0 });
   const navigate = useNavigate();
 
 
-    const { data, isLoading } = useQuery({
+    const { data, isLoading , isError } = useQuery({
         queryKey: ['feedback', id],
         queryFn: () => fetch(`http://localhost:3333/feedback/${id}`).then(res => res.json()),
-        onSuccess: (data) => {
-            setFeedback({ title: data.title, description: data.description, status: data.status });
-        }
     });
 
     const mutation = useMutation({
-        mutationFn: newData => fetch(`http://localhost:3333/feedback/${id}`, {
+        mutationFn: (newData: Feedback) => fetch(`http://localhost:3333/feedback/${id}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newData)
         }).then(res => res.json()),
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ['feedback'] })
             toast('Feedback updated successfully');
             navigate('/');
         }
@@ -39,7 +35,6 @@ export default function FeedbackDetailPage() {
             method: 'DELETE',
         }).then(res => res.json()),
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ['feedback'] })
             toast('Feedback deleted successfully');
             navigate('/');
         }
@@ -49,7 +44,7 @@ export default function FeedbackDetailPage() {
 
     useEffect(() => {
         if (data) {
-            setFeedback({ title: data.title, description: data.description, status: data.status });
+            setFeedback({ title: data.title, description: data.description, status: data.status, user_id: data.user_id });
         }
     }, [data]);
 
@@ -58,12 +53,12 @@ export default function FeedbackDetailPage() {
     const handleCancel = () => {
         setEditMode(false);
         if (data) {
-            setFeedback({ title: data.title, description: data.description, status: data.status });
+            setFeedback({ title: data.title, description: data.description, status: data.status, user_id: data.user_id  });
         }
     };
 
     const handleSave = () => {
-        debugger;
+
         mutation.mutate(feedback);
         setEditMode(false);
     };
@@ -81,6 +76,9 @@ export default function FeedbackDetailPage() {
 
 
     if (isLoading) return <div>Loading...</div>;
+
+    if(isError) return <div>Something went wrong...</div>
+
 
     return (
         <div className="min-h-screen bg-gray-100 flex items-center justify-center">
