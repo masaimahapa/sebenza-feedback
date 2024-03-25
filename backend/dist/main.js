@@ -9,6 +9,7 @@ async function bootstrap() {
     app.useGlobalPipes(new common_1.ValidationPipe({
         whitelist: true
     }));
+    app.enableCors();
     await app.listen(3333);
 }
 bootstrap();

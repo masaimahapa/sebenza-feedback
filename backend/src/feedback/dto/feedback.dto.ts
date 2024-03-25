@@ -9,6 +9,7 @@ export class FeedbackDto {
     @IsNotEmpty()
     cell_number: string;
     @IsString()
+    @IsOptional()
     status?: string;
 }
 

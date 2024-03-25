@@ -6,7 +6,11 @@ export default function FeedbackItem({feedback, handleClick = ()=> {}}) {
     <div className="card-body">
       <h2 className="card-title">
        {feedback.title}
-        <div className="badge badge-secondary">{feedback.status}</div>
+        {
+            feedback.status === 'new' && (
+                <div className="badge badge-secondary">{feedback.status}</div>
+            )
+        }
       </h2>
       <p>{feedback.description}</p>
 <span>By User: {feedback.userId}</span>

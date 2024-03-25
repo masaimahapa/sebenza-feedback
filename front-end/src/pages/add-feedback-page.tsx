@@ -1,8 +1,12 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export default function AddFeedbackPage() {
     const queryClient = useQueryClient();
+  const navigate = useNavigate();
+
     const [feedback, setFeedback] = React.useState({ title: '', description: '' });
 
     const mutation = useMutation({
@@ -15,7 +19,10 @@ export default function AddFeedbackPage() {
         }).then(res => res.json()),
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['feedback'] })
-            alert('Feedback added successfully');
+            toast('Feedback added successfully');
+            navigate('/');
+
+
         }
     })
 
@@ -29,6 +36,7 @@ export default function AddFeedbackPage() {
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       <div className="container max-w-md mx-auto p-8 bg-white shadow-lg rounded-lg">
         <h1 className="text-2xl font-bold text-center mb-4">Add Feedback</h1>
+        <p>Tell us about your experience using Sebenza wifi.</p>
         <form>
           <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700">Title</label>

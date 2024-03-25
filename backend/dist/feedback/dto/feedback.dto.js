@@ -29,6 +29,7 @@ __decorate([
 ], FeedbackDto.prototype, "cell_number", void 0);
 __decorate([
     (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
 ], FeedbackDto.prototype, "status", void 0);
 class UpdateFeedbackDto {

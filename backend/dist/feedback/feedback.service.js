@@ -22,6 +22,9 @@ let FeedbackService = class FeedbackService {
                 cell_number: dto.cell_number,
             },
         });
+        if (!user) {
+            throw new Error('User not found');
+        }
         const data = await this.prisma.feedback.create({
             data: {
                 title: dto.title,

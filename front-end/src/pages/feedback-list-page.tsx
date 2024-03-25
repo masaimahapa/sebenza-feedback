@@ -28,8 +28,9 @@ export default function FeedbackListPage() {
     <div className="card bg-base-100 shadow-xl p-5 m-5">
       <h1 className="text-2xl font-bold">Feedback</h1>
 
-      <div className="grid grid-cols-3 gap-4">
-        <div className="col-span-1 border p-4 space-y-5">
+  <div className=' overflow-x-scroll'>
+  <div className="grid grid-cols-3 gap-4 mix-w-max">
+        <div className="col-span-1 border p-4 space-y-5 ">
           <h2 className="text-lg font-semibold">New</h2>
           {newFeedback.length > 0 &&
             newFeedback.map((feedback: any, idx: number) => (
@@ -63,6 +64,7 @@ export default function FeedbackListPage() {
             ))}
         </div>
       </div>
+  </div>
     </div>
   );
 }
