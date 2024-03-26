@@ -2,7 +2,7 @@
 
 ## Description
 
-This app allows users to submit feedback about their experience using Sebenza via public transport. The backend is built with Nest.js and it handles API requests and manages data. The frontend is a nice and user-friendly interace for submitting and reviewing feedback.
+This app allows users to submit feedback about their experience using Sebenza via public transport. The backend is built with Nest.js and it handles API requests and manages data. The frontend is a nice and user-friendly interface for submitting and reviewing feedback.
 
 ## Running the Database
 
@@ -34,7 +34,7 @@ The backend API is available at http://localhost:3333.
 ### Feedback API Endpoints
 
 
-- `POST /feedback`: Create new feedback. Requires a body with `title`, `description`, `cell_number`, and `status`.
+- `POST /feedback`: Create new feedback. Requires a body with `title`, `description`, and `user_id`.
 - `GET /feedback`: Retrieve all feedback entries.
 - `GET /feedback/:id`: Get details of a specific feedback entry by its ID.
 - `PATCH /feedback/:id`: Update an existing feedback entry by ID. Requires some fields of `FeedbackDto` to update.
